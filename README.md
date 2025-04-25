@@ -1,22 +1,31 @@
-from flask import Flask, send_file, request
-import logging
+# Quick QR
 
-app = Flask(__name__)
+A 5-star, user-friendly QR Code Generator GUI application for Windows.
 
-# Configure logging
-logging.basicConfig(filename='ip_log.txt', level=logging.INFO, format='%(asctime)s - %(message)s')
+## Features
+- Enter any text or URL
+- Instant QR code preview
+- Save QR code directly to Downloads folder
+- No Python installation required
+- Branded icon `icon.ico`
 
-# Path to the image file
-IMAGE_PATH = 'path/to/your/image.jpg'
+## Installation
+1. Download `qr_gui.exe` from the [Releases](https://github.com/C0DER-B0T/qr-generator/releases/latest).
+2. Place `qr_gui.exe` anywhere on your system.
+3. Double-click to run.
 
-@app.route('/image')
-def serve_image():
-    # Log the IP address of the requester
-    ip_address = request.remote_addr
-    logging.info(f'IP Address: {ip_address}')
+## Usage
+1. Launch the app.
+2. Enter your text or URL in the input field.
+3. Click **Generate QR** to preview.
+4. Click **Save QR** to save the image in your Downloads folder.
 
-    # Serve the image
-    return send_file(IMAGE_PATH, mimetype='image/jpeg')
+## Files
+- `qr_gui.py`: Source code for the GUI app.
+- `icon.ico`: Application icon.
+- `qr_gui.exe`: Standalone Windows executable.
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+## Building from Source
+```bash
+pip install qrcode[pil] pillow pyinstaller
+pyinstaller --onefile --windowed --icon=icon.ico qr_gui.py
