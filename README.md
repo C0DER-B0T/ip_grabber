@@ -1,31 +1,65 @@
-# Quick QR
+🌐 IP Grabber & GeoLocator
 
-A 5-star, user-friendly QR Code Generator GUI application for Windows.
+A Flask-based tool to capture and log visitors' IP addresses and geolocation data using both browser geolocation (GPS) and IP-based lookup. It stores results in a log file for easy tracking and analysis.
 
-## Features
-- Enter any text or URL
-- Instant QR code preview
-- Save QR code directly to Downloads folder
-- No Python installation required
-- Branded icon `icon.ico`
+🚀 Features
 
-## Installation
-1. Download `qr_gui.exe` from the [Releases](https://github.com/C0DER-B0T/qr-generator/releases/latest).
-2. Place `qr_gui.exe` anywhere on your system.
-3. Double-click to run.
+📍 Get accurate geolocation using browser-based GPS (if allowed)
 
-## Usage
-1. Launch the app.
-2. Enter your text or URL in the input field.
-3. Click **Generate QR** to preview.
-4. Click **Save QR** to save the image in your Downloads folder.
+🌐 Fallback to IP-based location using ip-api.com
 
-## Files
-- `qr_gui.py`: Source code for the GUI app.
-- `icon.ico`: Application icon.
-- `qr_gui.exe`: Standalone Windows executable.
+📦 Reverse geocoding with OpenStreetMap's Nominatim
 
-## Building from Source
-```bash
-pip install qrcode[pil] pillow pyinstaller
-pyinstaller --onefile --windowed --icon=icon.ico qr_gui.py
+🧠 Logs detailed location data including IP, city, region, country, ZIP, ISP
+
+📝 Stores all logs in ip_log.txt with UTC timestamps
+
+🧪 Minimal, script-based deployment (no frontend frameworks)
+
+📂 Project Structure
+
+ip_grabber.py         # Main Flask app
+ip_log.txt            # Output log file (auto-created)
+
+⚙️ Requirements
+
+Python 3.6+
+
+Flask
+
+Requests
+
+Install with:
+
+pip install flask requests
+
+🧪 Usage
+
+Run the server:
+
+python ip_grabber.py
+
+Access the tracker page:
+
+Visit: http://localhost:5000/track
+
+View logs:
+
+All captured data is saved in ip_log.txt in JSON format with timestamps.
+
+📄 Example Log Output
+
+2025-04-25 18:23:45 UTC {"ip": "123.45.67.89", "method": "ip-api", "country": "USA", "region": "California", "city": "Los Angeles", "zip": "90001", "isp": "Comcast"}
+
+Or when browser geolocation is available:
+
+2025-04-25 18:25:01 UTC {"ip": "123.45.67.89", "method": "browser-geolocation", "coords": {"lat": 34.0522, "lon": -118.2437, "accuracy": 20}, "location": "Los Angeles, California, USA"}
+
+⚠️ Disclaimer
+
+This project is intended for educational and ethical purposes only. Do not use this script without clear consent from users. Always follow privacy and data protection laws.
+
+📬 Contact
+
+For issues, suggestions, or contributions, feel free to open an issue or pull request.
+
