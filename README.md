@@ -92,5 +92,3 @@ This tool is for **learning and awareness only**. Respect privacy and comply wit
 Feel free to fork, improve, or suggest enhancements.
 
 ---
-
-Need this exported as a `README.md` file or want GitHub Actions/Badge setup as well?
